@@ -1,0 +1,15 @@
+{
+  "name": "5-npm-and-events",
+  "version": "1.0.0",
+  "description": "",
+  "main": "demo_server.js",
+  "dependencies": {
+    "upper-case": "^2.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
