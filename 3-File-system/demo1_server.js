@@ -12,15 +12,13 @@ http.createServer(function(req, res) {
 
     let d = new Date;
     let reqTxt = "Requested url \'" + req.url + "\' at " + d.toTimeString().slice(0, 8) + '\n';
-    fs.appendFile('./entry_log.txt', reqTxt, function (err) {
-        if (err)
-            throw err;
-    });
-
-    if (req.url == '/delete') {
-        fs.unlink('./entry_log.txt', function (err) {
+    if (req.url != '/delete') {
+        fs.appendFile('./entry_log.txt', reqTxt, function (err) {
             if (err)
                 throw err;
+        });
+    } else {
+        fs.unlink('./entry_log.txt', function (err) {
         });
     }
 
