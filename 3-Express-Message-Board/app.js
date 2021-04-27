@@ -15,5 +15,5 @@ app.set('view engine', 'pug');
 // Use router for root
 app.use('/', router);
 
-// Listen on port 8080
-app.listen(8080);
+// Listen on port $PORT
+app.listen(process.env.PORT || 8080);
