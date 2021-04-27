@@ -1,0 +1,8 @@
+h1= title 
+for msg in messages 
+    div.card 
+        h2 From: #{msg.user}
+        p= msg.text 
+        p <small>Sent on: #{msg.added}</small>
+        br
+button <a href="/new"> NEW MESSAGE </a>

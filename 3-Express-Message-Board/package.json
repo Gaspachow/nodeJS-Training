@@ -1,0 +1,19 @@
+{
+  "name": "3-express-message-board",
+  "version": "1.0.0",
+  "description": "Simple message board with no DB",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gaspachow",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pug": "^3.0.2"
+  },
+  "engines": {
+    "node": "11.10.1"
+  }
+}
