@@ -9,7 +9,7 @@ let Genre = new Schema(
 );
 
 // Virtual for bookInstance's URL
-Genre.virtual('url').get(() => {
+Genre.virtual('url').get(function() {
     return ('/catalog/genre/' + this._id);
 });
 
