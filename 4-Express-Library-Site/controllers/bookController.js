@@ -35,7 +35,6 @@ exports.book_list = function(req, res) {
             if (err)
                 return (next(err));
             res.render('book_list', {title: 'Book List', book_list: list_books });
-            console.log(list_books);
         });
 };
 
