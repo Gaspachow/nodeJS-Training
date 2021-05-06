@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1 #{title}: #{book.title}
+
+  if book_instances.length
+
+    p #[strong Delete the following Book Copies before attempting to delete this book.]
+
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 Instances
+
+      dl
+      each instance in book_instances
+        dt
+          p Copy ID:
+          a(href=instance.url) #{instance._id}
+        dd #{instance.status}
+
+  else
+    p Do you really want to delete this book?
+
+    form(method='POST' action='')
+      div.form-group
+        input#bookid.form-control(type='hidden',name='bookid', required='true', value=book._id )
+        label(for='password') Password:
+        input#password.form-control(type='text' placeholder='Enter secret password' name='password' required='true')
+        if correct_pwd === false
+            p #[strong Wrong password.]
+
+      button.btn.btn-primary(type='submit') Delete
