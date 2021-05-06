@@ -5,7 +5,7 @@ const { body, validationResult } = require('express-validator');
 const dotenv = require('dotenv').config()
 
 // Display list of all Authors.
-exports.author_list = function(req, res) {
+exports.author_list = function(req, res, next) {
     Author.find()
         .sort([['family_name', 'ascending']])
         .exec((err, list_authors) => {
@@ -16,7 +16,7 @@ exports.author_list = function(req, res) {
 };
 
 // Display detail page for a specific Author.
-exports.author_detail = function(req, res) {
+exports.author_detail = function(req, res, next) {
     async.parallel({
         author: (callback) => {
             Author.findById(req.params.id)
@@ -39,7 +39,7 @@ exports.author_detail = function(req, res) {
 };
 
 // Display Author create form on GET.
-exports.author_create_get = function(req, res) {
+exports.author_create_get = function(req, res, next) {
     res.render('author_form', { title: 'Create Author' });
 };
 
@@ -76,7 +76,7 @@ exports.author_create_post = [
 ];
 
 // Display Author delete form on GET.
-exports.author_delete_get = function(req, res) {
+exports.author_delete_get = function(req, res, next) {
     async.parallel({
         author: (cb) => {
             Author.findById(req.params.id).exec(cb);
@@ -95,7 +95,7 @@ exports.author_delete_get = function(req, res) {
 };
 
 // Handle Author delete on POST.
-exports.author_delete_post = function(req, res) {
+exports.author_delete_post = function(req, res, next) {
     async.parallel({
         author: function(cb) {
           Author.findById(req.body.authorid).exec(cb);
@@ -121,11 +121,11 @@ exports.author_delete_post = function(req, res) {
 };
 
 // Display Author update form on GET.
-exports.author_update_get = function(req, res) {
+exports.author_update_get = function(req, res, next) {
     res.send('NOT IMPLEMENTED: Author update GET');
 };
 
 // Handle Author update on POST.
-exports.author_update_post = function(req, res) {
+exports.author_update_post = function(req, res, next) {
     res.send('NOT IMPLEMENTED: Author update POST');
 };

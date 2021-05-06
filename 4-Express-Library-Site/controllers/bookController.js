@@ -6,7 +6,7 @@ const { body, validationResult } = require('express-validator');
 
 const async = require('async');
 
-exports.index = function(req, res) {
+exports.index = function(req, res, next) {
     async.parallel({
         book_count: (callback) => {
             Book.countDocuments({}, callback);
@@ -29,7 +29,7 @@ exports.index = function(req, res) {
 };
 
 // Display list of all books.
-exports.book_list = function(req, res) {
+exports.book_list = function(req, res, next) {
     Book.find({}, 'title author')
         .populate('author')
         .exec((err, list_books) => {
@@ -40,7 +40,7 @@ exports.book_list = function(req, res) {
 };
 
 // Display detail page for a specific book.
-exports.book_detail = function(req, res) {
+exports.book_detail = function(req, res, next) {
     async.parallel({
         book: (callback) => {
             Book.findById(req.params.id)
@@ -65,7 +65,7 @@ exports.book_detail = function(req, res) {
 };
 
 // Display book create form on GET.
-exports.book_create_get = function(req, res) {
+exports.book_create_get = function(req, res, next) {
     async.parallel({
         authors: (callback) => {
             Author.find(callback);
@@ -151,17 +151,17 @@ exports.book_create_post = [
 ];
 
 // Display book delete form on GET.
-exports.book_delete_get = function(req, res) {
+exports.book_delete_get = function(req, res, next) {
     res.send('NOT IMPLEMENTED: Book delete GET');
 };
 
 // Handle book delete on POST.
-exports.book_delete_post = function(req, res) {
+exports.book_delete_post = function(req, res, next) {
     res.send('NOT IMPLEMENTED: Book delete POST');
 };
 
 // Display book update form on GET.
-exports.book_update_get = function(req, res) {
+exports.book_update_get = function(req, res, next) {
     async.parallel({
         book: (cb) => {
             Book.findById(req.params.id)
