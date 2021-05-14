@@ -6,3 +6,4 @@ Currently learning:
 - Mongoose DB manipulation  
 - CRUD implementation with controllers
 - Bug-proofing PUG templates and controllers  
+- Authentication  
